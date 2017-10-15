@@ -1,5 +1,7 @@
-package me.oyio.app.android.freshthing
+package me.oyio.app.android.freshthing.view.things
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -10,8 +12,13 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_things.*
 import kotlinx.android.synthetic.main.app_bar_things.*
+import me.oyio.app.android.freshthing.R
+import me.oyio.app.android.freshthing.view.settings.SettingsActivity
+import me.oyio.app.android.freshthing.view.things.dummy.DummyContent
 
-class ThingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class ThingsActivity : AppCompatActivity(),
+                        NavigationView.OnNavigationItemSelectedListener,
+                        ThingsFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,16 +65,13 @@ class ThingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
+            R.id.nav_readhub -> {
                 // Handle the camera action
             }
-            R.id.nav_gallery -> {
+            R.id.nav_chouti -> {
 
             }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
+            R.id.nav_v2ex -> {
 
             }
             R.id.nav_share -> {
@@ -76,9 +80,16 @@ class ThingsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.nav_send -> {
 
             }
+            R.id.nav_setting -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onListFragmentInteraction(item: DummyContent.DummyItem) {
+
     }
 }
