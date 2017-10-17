@@ -21,6 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -35,4 +38,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // android architecture
+    implementation "android.arch.lifecycle:runtime:1.0.0"
+    implementation "android.arch.lifecycle:extensions:1.0.0-beta2"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-beta2"
+    implementation "android.arch.persistence.room:runtime:1.0.0-beta2"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-beta2"
+    implementation "android.arch.paging:runtime:1.0.0-alpha3"
 }
