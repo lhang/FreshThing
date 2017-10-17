@@ -21,7 +21,11 @@
         </activity>
         <activity
             android:name=".view.settings.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".view.thingsDetail.ThingsDetailActivity"
+            android:label="@string/title_activity_things_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
