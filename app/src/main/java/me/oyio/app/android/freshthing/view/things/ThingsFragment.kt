@@ -1,7 +1,6 @@
 package me.oyio.app.android.freshthing.view.things
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +15,7 @@ import android.view.ViewGroup
 import me.oyio.app.android.freshthing.R
 import me.oyio.app.android.freshthing.view.things.dummy.DummyContent
 import me.oyio.app.android.freshthing.view.things.dummy.DummyContent.DummyItem
-import me.oyio.app.android.freshthing.viewModel.ThingsViewModel
+import me.oyio.app.android.freshthing.viewModel.ThingsListViewModel
 
 /**
  * A fragment representing a list of Items.
@@ -36,7 +34,7 @@ class ThingsFragment : Fragment() {
     private var mListener: OnListFragmentInteractionListener? = null
 
     private final var UID_KEY = "uid"
-    private var viewModel: ThingsViewModel? = null
+    private var viewModel: ThingsListViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +78,7 @@ class ThingsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ThingsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ThingsListViewModel::class.java)
         viewModel?.getThings()?.observe(this, Observer { thing ->
 
         })

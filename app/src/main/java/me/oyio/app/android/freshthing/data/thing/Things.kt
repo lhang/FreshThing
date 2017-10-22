@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey
  */
 
 @Entity
-data class Thing (
+data class Things(
         @PrimaryKey var id: String,
         var title: String,
         var content: String

@@ -9,12 +9,12 @@ import android.arch.persistence.room.Query
  * Created by lllde on 2017/10/18.
  */
 @Dao
-interface ThingDao {
+interface ThingsDao {
     @Insert(onConflict = REPLACE)
-    fun insert(things: List<Thing>)
+    fun insert(things: List<Things>)
 
     @Query("SELECT * FROM thing WHERE id = :thingId")
-    fun load(thinId: String): Thing
+    fun load(thinId: String): Things
 
     @Query("SELECT * FROM thing")
     fun loadThings()

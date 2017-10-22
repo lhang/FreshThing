@@ -1,6 +1,6 @@
 package me.oyio.app.android.freshthing.dataSource
 
-import me.oyio.app.android.freshthing.data.thing.Thing
+import me.oyio.app.android.freshthing.data.thing.Things
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,5 +10,5 @@ import retrofit2.http.Path
  */
 interface Webservice {
     @GET("/topic")
-    fun getThings(@Path("thing") thingId: String): Call<Thing>
+    fun getThings(@Path("thing") thingId: String): Call<Things>
 }
