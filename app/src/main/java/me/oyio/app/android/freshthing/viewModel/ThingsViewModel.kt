@@ -19,7 +19,7 @@ class ThingsViewModel: ViewModel() {
         this.thingRepo = thingRepo;
     }
 
-    fun initThings() {
-        things = thingRepo?.getThings()
+    fun getThings(): LiveData<Thing>? {
+        return things
     }
 }

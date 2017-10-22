@@ -81,7 +81,6 @@ class ThingsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ThingsViewModel::class.java)
-        viewModel?.initThings()
         viewModel?.getThings()?.observe(this, Observer { thing ->
 
         })
