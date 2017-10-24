@@ -1,6 +1,5 @@
 package me.oyio.app.android.freshthing.view.things
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_things.*
 import kotlinx.android.synthetic.main.app_bar_things.*
 import me.oyio.app.android.freshthing.R
 import me.oyio.app.android.freshthing.view.settings.SettingsActivity
-import me.oyio.app.android.freshthing.view.things.dummy.DummyContent
+import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent
 
 class ThingsActivity : AppCompatActivity(),
                         NavigationView.OnNavigationItemSelectedListener,
@@ -89,7 +88,7 @@ class ThingsActivity : AppCompatActivity(),
         return true
     }
 
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem) {
+    override fun onListFragmentInteraction(item: ThingsContent.DummyItem) {
 
     }
 }

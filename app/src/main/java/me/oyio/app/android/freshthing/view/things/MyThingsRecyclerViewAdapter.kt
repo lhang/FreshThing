@@ -8,7 +8,7 @@ import android.widget.TextView
 import me.oyio.app.android.freshthing.R
 
 import me.oyio.app.android.freshthing.view.things.ThingsFragment.OnListFragmentInteractionListener
-import me.oyio.app.android.freshthing.view.things.dummy.DummyContent.DummyItem
+import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent.DummyItem
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the

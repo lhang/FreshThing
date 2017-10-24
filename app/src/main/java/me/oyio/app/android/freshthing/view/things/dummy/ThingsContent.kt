@@ -10,7 +10,7 @@ import java.util.HashMap
  *
  * TODO: Replace all uses of this class before publishing your app.
  */
-object DummyContent {
+object ThingsContent {
 
     /**
      * An array of sample (dummy) items.
@@ -27,26 +27,21 @@ object DummyContent {
     init {
         // Add some sample items.
         for (i in 1..COUNT) {
-            addItem(createDummyItem(i))
+            addItem(createDummyItem(i.toString()))
         }
     }
 
-    private fun addItem(item: DummyItem) {
+    fun addItem(s: String) {
+        addItem(createDummyItem(s))
+    }
+
+    fun addItem(item: DummyItem) {
         ITEMS.add(item)
         ITEM_MAP.put(item.id, item)
     }
 
-    private fun createDummyItem(position: Int): DummyItem {
-        return DummyItem(position.toString(), "Item " + position, makeDetails(position))
-    }
-
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Item: ").append(position)
-        for (i in 0 until position) {
-            builder.append("\nMore details information here.")
-        }
-        return builder.toString()
+    private fun createDummyItem(title: String): DummyItem {
+        return DummyItem(title, title, title)
     }
 
     /**

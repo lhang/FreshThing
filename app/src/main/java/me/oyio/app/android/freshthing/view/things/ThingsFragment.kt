@@ -13,8 +13,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import me.oyio.app.android.freshthing.R
-import me.oyio.app.android.freshthing.view.things.dummy.DummyContent
-import me.oyio.app.android.freshthing.view.things.dummy.DummyContent.DummyItem
+import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent
+import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent.DummyItem
 import me.oyio.app.android.freshthing.viewModel.ThingsListViewModel
 
 /**
@@ -42,6 +42,7 @@ class ThingsFragment : Fragment() {
         if (arguments != null) {
             mColumnCount = arguments.getInt(ARG_COLUMN_COUNT)
         }
+        viewModel = ViewModelProviders.of(this).get(ThingsListViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -56,7 +57,11 @@ class ThingsFragment : Fragment() {
             } else {
                 view.layoutManager = GridLayoutManager(context, mColumnCount)
             }
-            view.adapter = MyThingsRecyclerViewAdapter(DummyContent.ITEMS, mListener)
+            view.adapter = MyThingsRecyclerViewAdapter(ThingsContent.ITEMS, mListener)
+
+            viewModel?.getThings()?.observe(this, Observer { thing ->
+                ThingsContent.addItem(thing.toString())
+            })
         }
         return view
     }
