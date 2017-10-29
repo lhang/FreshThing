@@ -12,6 +12,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_things.*
 import kotlinx.android.synthetic.main.app_bar_things.*
 import me.oyio.app.android.freshthing.R
+import me.oyio.app.android.freshthing.data.dao.thing.Thing
 import me.oyio.app.android.freshthing.view.settings.SettingsActivity
 import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent
 
@@ -88,7 +89,7 @@ class ThingsActivity : AppCompatActivity(),
         return true
     }
 
-    override fun onListFragmentInteraction(item: ThingsContent.DummyItem) {
+    override fun onListFragmentInteraction(item: Thing) {
 
     }
 }

@@ -1,6 +1,6 @@
-package me.oyio.app.android.freshthing.dataSource
+package me.oyio.app.android.freshthing.data.dataSource
 
-import me.oyio.app.android.freshthing.data.thing.Things
+import me.oyio.app.android.freshthing.data.dao.thing.Thing
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,5 +10,5 @@ import retrofit2.http.Path
  */
 interface ReadHubService {
     @GET("/topic?lastCursor=22591&pageSize=10")
-    fun topicList(@Path("topic") page: String): Call<Things>
+    fun topicList(@Path("topic") page: String): Call<List<Thing>>
 }

@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import me.oyio.app.android.freshthing.R
+import me.oyio.app.android.freshthing.data.dao.thing.Thing
 import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent
 import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent.DummyItem
 import me.oyio.app.android.freshthing.viewModel.ThingsListViewModel
@@ -32,6 +33,7 @@ class ThingsFragment : Fragment() {
     // TODO: Customize parameters
     private var mColumnCount = 1
     private var mListener: OnListFragmentInteractionListener? = null
+    private var thingsList: List<Thing>? = null
 
     private final var UID_KEY = "uid"
     private var viewModel: ThingsListViewModel? = null
@@ -57,10 +59,10 @@ class ThingsFragment : Fragment() {
             } else {
                 view.layoutManager = GridLayoutManager(context, mColumnCount)
             }
-            view.adapter = MyThingsRecyclerViewAdapter(ThingsContent.ITEMS, mListener)
+            view.adapter = MyThingsRecyclerViewAdapter(thingsList, mListener)
 
-            viewModel?.getThings()?.observe(this, Observer { thing ->
-                ThingsContent.addItem(thing.toString())
+            viewModel?.getThings()?.observe(this, Observer {
+                thingsList = it
             })
         }
         return view
@@ -100,7 +102,7 @@ class ThingsFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem)
+        fun onListFragmentInteraction(item: Thing)
     }
 
     companion object {

@@ -2,19 +2,23 @@ package me.oyio.app.android.freshthing.viewModel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
-import me.oyio.app.android.freshthing.data.thing.Things
-import me.oyio.app.android.freshthing.repository.ThingsRepository
+import me.oyio.app.android.freshthing.data.dao.thing.Thing
+import me.oyio.app.android.freshthing.data.repository.ThingsRepository
 import javax.inject.Inject
 
 /**
  * Created by lllde on 2017/10/18.
  */
 class ThingsListViewModel : ViewModel() {
-    private var thingId: String? = null
-    private var things: LiveData<Things>? = null
-    @Inject lateinit var thingRepo: ThingsRepository
+    private var things: LiveData<List<Thing>>? = null
+    @Inject var thingRepo: ThingsRepository = ThingsRepository()
 
-    fun getThings(): LiveData<Things>? {
+    fun getThings(): LiveData<List<Thing>>? {
+        things = thingRepo.getThings()
         return things
+    }
+
+    fun refresh() {
+        thingRepo.refresh()
     }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.oyio.app.android.freshthing.R
+import me.oyio.app.android.freshthing.data.dao.thing.Thing
 
 import me.oyio.app.android.freshthing.view.things.ThingsFragment.OnListFragmentInteractionListener
 import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent.DummyItem
@@ -15,7 +16,7 @@ import me.oyio.app.android.freshthing.view.things.dummy.ThingsContent.DummyItem
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
-class MyThingsRecyclerViewAdapter(private val mValues: List<DummyItem>,
+class MyThingsRecyclerViewAdapter(private val mValues: List<Thing>?,
                                   private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<MyThingsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,9 +26,9 @@ class MyThingsRecyclerViewAdapter(private val mValues: List<DummyItem>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mItem = mValues[position]
-        holder.mIdView.text = mValues[position].id
-        holder.mContentView.text = mValues[position].content
+        holder.mItem = mValues?.get(position)
+        holder.mIdView.text = mValues?.get(position)?.title
+        holder.mContentView.text = mValues?.get(position)?.content
 
         holder.mView.setOnClickListener {
             mListener?.onListFragmentInteraction(holder.mItem!!)
@@ -35,13 +36,16 @@ class MyThingsRecyclerViewAdapter(private val mValues: List<DummyItem>,
     }
 
     override fun getItemCount(): Int {
-        return mValues.size
+        if (mValues != null) {
+            return mValues.size
+        }
+        return 0
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val mIdView: TextView
         val mContentView: TextView
-        var mItem: DummyItem? = null
+        var mItem:  Thing? = null
 
         init {
             mIdView = mView.findViewById(R.id.id)
